@@ -1,0 +1,145 @@
+<br>
+<div class="container m-2 p-2">
+    <div class="register-form">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+
+          <div class="form-group">
+            <label>Nombre Completo: </label>
+            <input type="text" formControlName="nombre" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['nombre'].errors }" max="60" />
+            <div *ngIf="submitted && f['nombre'].errors" class="invalid-feedback">
+              <div *ngIf="f['nombre'].errors['required']">El Nombre es requerido!</div>
+              <div *ngIf="f['nombre'].errors['minlength']">El nombre debe tener mas de 6 caracteres</div>
+              <div *ngIf="f['nombre'].errors['maxlength']">El nombre debe tener menos de 20 caracteres</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label>rut</label>
+            <input type="text" formControlName="rut" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['rut'].errors }" maxlength="9"/>
+            <div *ngIf="submitted && f['rut'].errors" class="invalid-feedback">
+              <div *ngIf="f['rut'].errors['required']">rut is required</div>
+              <div *ngIf="f['rut'].errors['minlength']">
+                Rut must be at least 8 characters
+              </div>
+              <div *ngIf="f['rut'].errors['maxlength']">
+                Rut must not exceed 9 characters
+              </div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label>correo</label>
+            <input
+              type="text"
+              formControlName="correo"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['correo'].errors }" />
+            <div *ngIf="submitted && f['correo'].errors" class="invalid-feedback">
+              <div *ngIf="f['correo'].errors['required']">correo is required</div>
+              <div *ngIf="f['correo'].errors['email']">correo is invalid</div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label>direccion</label>
+            <input type="text" formControlName="direccion" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f['direccion'].errors }" maxlength="40" />
+            <div *ngIf="submitted && f['direccion'].errors" class="invalid-feedback">
+              <div *ngIf="f['direccion'].errors['required']">Direccion is required</div>
+              <div *ngIf="f['direccion'].errors['minlength']">
+                Direccion must be at least 10 characters
+              </div>
+              <div *ngIf="f['direccion'].errors['maxlength']">
+                Direccion must not exceed 60 characters
+              </div>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <label>telefono </label>
+            <input type="tel" formControlName="telefono" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f['telefono'].errors }" maxlength="9"/>
+            <div *ngIf="submitted && f['telefono'].errors"
+              class="invalid-feedback" >
+              <div *ngIf="f['telefono'].errors['required']">
+                Telefono is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>IdComuna</label>
+            <input type="text" formControlName="idComuna" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['idComuna'].errors }" maxlength="2"/>
+            <div *ngIf="submitted && f['idComuna'].errors"
+                class="invalid-feedback" >
+                <div *ngIf="f['idComuna'].errors['required']">
+                Comuna is required
+                </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>AFP</label>
+            <input type="text" formControlName="idAfp" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['idAfp'].errors }" maxlength="2"/>
+            <div *ngIf="submitted && f['idAfp'].errors"
+                class="invalid-feedback" >
+                <div *ngIf="f['idAfp'].errors['required']">
+                    AFP is required
+                </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>idSalud</label>
+            <input type="text" formControlName="idSalud" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['idSalud'].errors }" maxlength="2"/>
+            <div *ngIf="submitted && f['idSalud'].errors"
+                class="invalid-feedback" >
+                <div *ngIf="f['idSalud'].errors['required']">
+                    AFP is required
+                </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>idCuenta</label>
+            <input type="text" formControlName="idCuenta" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['idCuenta'].errors }" maxlength="2"/>
+            <div *ngIf="submitted && f['idCuenta'].errors"
+                class="invalid-feedback" >
+                <div *ngIf="f['idCuenta'].errors['required']">
+                    AFP is required
+                </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>idContrato</label>
+            <input type="text" formControlName="idContrato" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f['idContrato'].errors }" maxlength="2"/>
+            <div *ngIf="submitted && f['idContrato'].errors"
+                class="invalid-feedback" >
+                <div *ngIf="f['idContrato'].errors['required']">
+                    AFP is required
+                </div>
+            </div>
+          </div>
+
+          <br>
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Guardar</button>
+            <button type="button" (click)="onReset()" class="btn btn-warning float-right" >Borrar</button>
+          </div>
+        </form>
+        <div *ngIf="submitted">
+            <div class="container text-center">
+              <h4>Persona creada con exito! </h4>
+              <button class="btn btn-success" (click)="onReset()">Añadir Otra persona </button>
+              <button class="btn btn-success" routerLink="/">Volver </button>
+            </div>
+      </div>
+</div>

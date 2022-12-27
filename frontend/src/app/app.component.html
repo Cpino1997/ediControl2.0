@@ -1,0 +1,88 @@
+<div class="contenedor">
+  <!-- login -->
+  <div class="container-fluid" *ngIf="!isLoggedIn">
+    <app-login></app-login>
+  </div>
+  <!-- login -->
+
+  <!-- home -->
+  <div *ngIf="isLoggedIn">
+    <div class="grilla">
+
+      <section class="lateral">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 100%; height: 100%;">
+          <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+            <span class="fs-4">EdiControl</span>
+          </a>
+          <hr>
+
+          <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+              <a href="/home" class="nav-link" [routerLinkActive]="['active']" aria-current="page" routerLink="/home">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                Inicio
+              </a>
+            </li>
+            <li>
+              <a href="/liquidaciones" class="nav-link text-white" [routerLinkActive]="['active']" routerLink="/liquidaciones">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                Liquidaciones
+              </a>
+            </li>
+            <li>
+              <a href="/trabajadores" class="nav-link text-white" [routerLinkActive]="['active']" routerLink="/trabajadores">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                Trabajadores
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white" [routerLinkActive]="['active']">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                Edificios
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white" [routerLinkActive]="['active']">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                Gastos
+              </a>
+            </li>
+            <li>
+              <a href="#" class="nav-link text-white" [routerLinkActive]="['active']">
+                <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                Soporte
+              </a>
+            </li>
+          </ul>
+
+          <hr>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropdown button
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </div>
+        </div>
+        
+      </section>
+
+      <main class="contenido">
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+      </main>
+
+      <footer class="foot">
+        <div class="container" style="width: 100%; text-align: center;">
+          <small>Creado con amor por PinoLabs</small>
+        </div>
+      </footer>
+    </div>
+  </div>
+  <!-- home -->
+</div>

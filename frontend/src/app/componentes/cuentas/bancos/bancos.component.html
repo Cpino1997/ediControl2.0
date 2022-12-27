@@ -1,0 +1,5 @@
+<select ngModel name="afp" class="form-control" id="selectAction" (change) = "seleccionar(t.value)" #t>
+    <option *ngFor="let banco of bancos" [value]="banco.id">
+        {{ banco.nombre }}
+    </option>
+</select>

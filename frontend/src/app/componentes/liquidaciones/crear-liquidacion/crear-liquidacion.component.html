@@ -1,0 +1,77 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col col-md-12">
+            <hr>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col col-md-12">
+            <br>
+            <div class="centro">
+                <h2>Pasos Para Crear Una Liquidacion Efectiva</h2>
+            </div>
+        </div>
+        <br>
+        <div class="col col-md-8 centro">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" *ngIf="!submitted">
+                <br>
+
+                <div class="row">
+                    <div class="col col-md-12">
+                       
+                        <div class="form-group">
+                            <label>Nombre Trabajador: </label>
+                            <select ngModel name="trabajador" formControlName="idTrabajador" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['idTrabajador'].errors }">
+                                <option value="" disabled> Seleccione Una Opcion</option>
+                                <option *ngFor="let trabajador of trabajadores" [value]="trabajador.id">
+                                    {{trabajador.nombre}}
+                                </option>
+                            </select>
+                            <div *ngIf="submitted && f['idTrabajador'].errors" class="invalid-feedback">
+                              <div *ngIf="f['idTrabajador'].errors['required']">El Trabajador es requerido!</div>
+                            </div>
+                          </div>
+                      
+                    </div>
+
+                    <div class="col col-md-6">
+                        <label> Asistencias: </label>
+                        <input class="form-control" formControlName="asistencias" placeholder="">
+                    </div>
+                    <div class="col col-md-6">
+                        <label> Ausencias: </label>
+                        <input class="form-control" formControlName="ausencias" placeholder="">
+                    </div>
+                    <br>
+                    <div class="col col-md-12">
+                        <button type="submit" class="btn btn-outline-primary m-2">Generar</button>
+                    </div>
+                </div>
+            </form>
+            <div *ngIf="submitted">
+                <div class="container text-center">
+                    <h4>Liquidacion creada con exito! </h4>
+                    <br>
+                    <div class="row">
+                        <div class="col col-md-12">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col col-md-6">
+                                        <div class="form-control">
+                                            <label>Liquido a Pagar: {{newLiquidacion.liquido }}</label>
+                                            <br>
+                                            <label>Bruto : {{newLiquidacion.bruto}}</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-success" (click)="onReset()">Añadir Otra </button>
+                    <button class="btn btn-success" routerLink="/liquidaciones">Volver </button>
+                </div>
+        </div>
+        </div>
+    </div>
+</div>

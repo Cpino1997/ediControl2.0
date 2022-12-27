@@ -1,0 +1,43 @@
+<html lang="es">
+<head>
+  <title>Liquidacion de Sueldo</title>
+    <style type="text/css">
+        body {
+            width: 100% !important;
+            height: 100%;
+            background: #fff;
+            color: black;
+            font-size: 100%;
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.65;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-size-adjust: none;
+        }
+        .logo{
+            width: 50px;
+        }
+    </style>
+ </head>
+<body>
+    <header>
+        <img class="logo" src="https://i.ibb.co/n7xMtCz/logo-Zurich.png" alt="logo" />
+        <p>
+            Comunidad Edificio Espacio Zurich<br/>
+            76.336. <br/>
+            San Ernesto #990, Temuco.
+            <span >
+                Liquidacion <span th:text="${liquidacion.fecha}"></span>
+            </span>
+        </p>
+    </header>
+    <br/>
+    <main class="centro">
+        <section class="trabajador">
+            <div class="der"> Nombre del Trabajador : <span th:text="${liquidacion.trabajador.nombre}"></span></div>
+            <div class="izq">Rut: <span th:text="${liquidacion.trabajador.rut}"></span></div>
+            <br/>
+            <div>Liquido a pagar: <span th:text="${liquidacion.liquido}"></span></div>
+        </section>
+    </main>
+</body>
+</html>

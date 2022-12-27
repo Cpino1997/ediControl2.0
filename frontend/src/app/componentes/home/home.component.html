@@ -1,0 +1,16 @@
+<div class="container" *ngIf="isLoggedIn">
+    <br>
+    <div class="container">
+        <h2>Bienvenido </h2>
+    </div><app-afp></app-afp>
+    <br>
+    <app-salud></app-salud>
+    <br>
+    <app-bancos></app-bancos>
+    <br>
+    <app-tipos></app-tipos>
+    <br>
+    <app-cuentas></app-cuentas>
+    <br>
+    <button (click)="salir()">salir</button>
+</div>

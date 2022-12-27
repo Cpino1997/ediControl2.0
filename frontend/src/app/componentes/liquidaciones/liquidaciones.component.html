@@ -1,0 +1,41 @@
+
+<br>
+<h1>Liquidaciones</h1>
+<select ngModel name="trabajador" class="form-control" id="selectAction" #t>
+    <option *ngFor="let liquidacion of liquidaciones" [value]="liquidacion.id">
+        {{liquidacion.id }}  / baseImponible : {{liquidacion.liquido}} / bruto: {{liquidacion.bruto}} / trabajador {{liquidacion.trabajador.nombre}}
+    </option>
+</select>
+
+<br>
+<table class="table w60">
+    <thead>
+      <tr>
+        <th scope="col">Nombre</th>
+        <th scope="col">Cargo</th>
+        <th scope="col">$</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let liquidacion of liquidaciones">
+      <tr>
+        <td>{{liquidacion.trabajador.nombre}}</td>
+        <td>{{ liquidacion.trabajador.contrato.cargo.nombre}}</td>
+        <td>{{ liquidacion.liquido }}</td>
+        <td [ngSwitch]="liquidacion.pagada">
+            <div *ngSwitchCase="false">No Pagado</div>
+            <div *ngSwitchCase="true">Pagado</div>
+            <!--default case when there are no matches -->
+            <div *ngSwitchDefault>No Pagado</div>
+        </td>
+        <td>
+            <mat-icon fontIcon="visibility"></mat-icon>
+            <mat-icon fontIcon="download"></mat-icon>
+        </td>
+      </tr>
+    </tbody>
+    <div colspan="6">
+            <a href="/home" class="btn btn-outline-primary m-2" routerLink="/home">Volver</a><a href="/crear-liquidacion" routerLink="/crear-liquidacion" class="btn btn-outline-primary m-2">Agregar Liquidaciones</a>
+    </div>
+  </table>

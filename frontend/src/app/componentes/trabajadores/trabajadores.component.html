@@ -1,0 +1,84 @@
+<br>
+<div class="container">
+    <br>
+    <h1 class="centro">Gestion de trabajadores</h1>
+    <br>
+    <hr>
+    <br>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Rut</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody *ngFor="let trabajador of trabajadores">
+          <tr>
+            <td>{{trabajador.nombre}}</td>
+            <td>{{ trabajador.rut}}</td>
+            <td>{{ trabajador.contrato.cargo.nombre }}</td>
+            <td [ngSwitch]="trabajador.activo">
+                <div *ngSwitchCase="true">Activo</div>
+                <div *ngSwitchCase="false">No Activo</div>
+                <!--default case when there are no matches -->
+                <div *ngSwitchDefault>No Activo</div>
+            </td>
+            <td>
+                <mat-icon fontIcon="visibility"></mat-icon>
+                <mat-icon fontIcon="download"></mat-icon>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+    <div class="container centro">
+        <a href="/home" class="btn btn-outline-info" [routerLink]="['/home']" routerLinkActive="router-link-active" >Volver</a>
+        <a href="/crear-trabajador" routerLink="/crear-trabajador" class="btn btn-outline-primary m-2">Agregar Trabajadores</a>
+    </div>
+</div>
+
+<hr>
+
+<h1>Contratos</h1>
+<select ngModel name="contrato" class="form-control" id="selectAction" (change) = "seleccionar(t.value)" #t>
+    <option *ngFor="let contrato of contratos" [value]="contrato.id">
+        {{contrato.id }}  / {{contrato.fechaInicio}} / {{contrato.fechaFin}} / {{contrato.cargo.nombre}}
+    </option>
+</select>
+<br>
+<h1>Cargos</h1>
+<select ngModel name="cargo" class="form-control" id="selectAction" (change) = "seleccionar(car.value)" #car>
+    <option *ngFor="let cargo of cargos" [value]="cargo.id">
+        {{cargo.id }}  / {{cargo.nombre}} / {{cargo.sueldo}} 
+    </option>
+</select>
+<br>
+<h1>Regiones</h1>
+<select ngModel name="region" class="form-control" id="selectAction" (change) = "seleccionarComunas(r.value)" #r>
+    <option *ngFor="let region of regiones" [value]="region.id">
+        {{region.nombre }} 
+    </option>
+</select>
+<br>
+<h1>Comunas </h1>
+<select ngModel name="comuna" class="form-control" id="selectAction" (change) = "seleccionar(c.value)" #c>
+    <option *ngFor="let comuna of comunas" [value]="comuna.id">
+        {{comuna.id }}  / {{comuna.nombre}} / {{comuna.region.nombre}} 
+    </option>
+</select>
+<br>
+<h1>Comunas by Region</h1>
+<select ngModel name="comuna" class="form-control" id="selectAction" (change) = "seleccionar(cbyr.value)" #cbyr>
+    <option *ngFor="let comuna of comunasbyregion" [value]="comuna.id">
+        {{comuna.id }}  / {{comuna.nombre}}
+    </option>
+</select>
+<br>
+<h1>Trabajadores</h1>
+<select ngModel name="trabajador" class="form-control" id="selectAction" (change) = "seleccionar(t.value)" #t>
+    <option *ngFor="let trabajador of trabajadores" [value]="trabajador.id">
+        {{trabajador.id }}  / {{trabajador.nombre}} / {{trabajador.rut}} / afp: {{trabajador.afp.nombre}} / prevision: {{ trabajador.salud.nombre}} / inicioContrato: {{ trabajador.contrato.fechaFin}}
+    </option>
+</select>
